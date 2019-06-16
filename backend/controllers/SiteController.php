@@ -1,6 +1,8 @@
 <?php
+
 namespace backend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -26,10 +28,10 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'edit-profile'],
                         'allow' => true,
                         'roles' => ['@'],
-                    ],
+                    ]
                 ],
             ],
             'verbs' => [
@@ -60,7 +62,35 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $userId = Yii::$app->user->getId();
+        $model = User::findOne(['id'=>$userId]);
+//        $user = $model->attributes;
+        $user = Yii::$app->user->identity;
+
+        return $this->render('index', compact('user', 'model'));
+    }
+    /**
+     * Edit profile data
+     *
+     * @return string
+     */
+    public function actionEditProfile()
+    {
+        $userId = Yii::$app->user->getId();
+        $user = User::findOne(['id'=>$userId]);
+
+        if ($user->load(Yii::$app->request->post()) && $user->validate()) {
+
+            if ($user->save()) {
+                Yii::$app->session->setFlash('success', 'Данные приняты');
+                return $this->refresh();
+            } else {
+                echo '<pre>' . print_r($user->errors, true) . '</pre>';
+                Yii::$app->session->setFlash('error', 'Ошибка сохранения!');
+            }
+        }
+
+        return $this->render('edit', compact('user'));
     }
 
     /**

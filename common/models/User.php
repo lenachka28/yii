@@ -47,6 +47,20 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'id',
+            'name' => 'Имя',
+            'email' => 'email',
+            'surname' => 'Фамилия',
+            'username' => 'Логин',
+            'city' => 'Город',
+            'age' => 'Возраст',
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -55,6 +69,10 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['username', 'required'],
+            [['name', 'surname', 'city'], 'string'],
+            ['age', 'integer'],
+            ['email', 'email']
         ];
     }
 

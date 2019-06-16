@@ -15,6 +15,15 @@ class LoginForm extends Model
 
     private $_user;
 
+    public function attributeLabels()
+    {
+        return [
+
+            'username' => 'Логин',
+            'rememberMe' => 'Запомнить меня',
+            'password' => 'Пароль'
+        ];
+    }
 
     /**
      * {@inheritdoc}
