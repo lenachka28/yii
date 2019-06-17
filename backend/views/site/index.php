@@ -47,7 +47,7 @@ $this->title = 'Profile';
         </div>
         <div class="row">
             <?php
-            echo Html::a('Редактировать', 'site/edit-profile', ['class' => 'btn btn-lg btn-primary']);
+            echo Html::a('Редактировать', 'edit-profile', ['class' => 'btn btn-lg btn-primary']);
             ?>
         </div>
     </div>
