@@ -39,7 +39,7 @@ class ArticlesController extends Controller
         $query = Articles::find();
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3]);
         $articles = $query->offset($pages->offset)
-            ->limit(2)//$pages->limit
+            ->limit(3)//$pages->limit
             ->all();
 
         return $this->render('articles', compact('articles', 'pages'));

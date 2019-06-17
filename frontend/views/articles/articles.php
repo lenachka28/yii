@@ -35,8 +35,6 @@ use frontend\models\Articles;
         <hr>
     </div>
 
-<?php
-//echo '<pre>' . print_r($pages, true) . '</pre>';
-echo LinkPager::widget([
+<?= LinkPager::widget([
     'pagination' => $pages
 ]);
