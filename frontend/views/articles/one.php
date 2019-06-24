@@ -1,18 +1,17 @@
 <?php
 
+/* @var $article \common\models\Articles */
+
 use yii\helpers\Html;
 
-/**
- * Created by PhpStorm.
- * User: Елена
- * Date: 08.06.2019
- * Time: 13:46
- */
 ?>
 
 <div class="row">
     <h2><?= $article->title ?></h2>
     <p><?= $article->text ?></p>
     <p><?= $article->date ?></p>
-    <p><?= Html::a('Назад', 'index', ['class' => "btn btn-default"]) ?></p>
+    <p>
+        <?= Html::a('Список новостей', ['articles/index'], ['class' => 'btn btn-primary', 'type' => 'button']) ?>
+        <?= Html::a('Редактировать', ['articles/edit', 'id' => $article->id], ['class' => 'btn btn-warning', 'type' => 'button']) ?>
+    </p>
 </div>

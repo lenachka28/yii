@@ -1,5 +1,8 @@
 <?php
 
+/* @var $form ActiveForm */
+/* @var $article \common\models\Articles */
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 

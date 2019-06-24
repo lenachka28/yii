@@ -1,10 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Елена
- * Date: 16.06.2019
- * Time: 2:01
- */
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $user \common\models\User */
+
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;

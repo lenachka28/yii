@@ -11,7 +11,11 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
+ * @property string $name
+ * @property string $surname
  * @property string $username
+ * @property string $city
+ * @property string $age
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
@@ -47,7 +51,9 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function attributeLabels()
     {
         return [

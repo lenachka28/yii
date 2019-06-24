@@ -1,23 +1,30 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Елена
- * Date: 08.06.2019
- * Time: 12:12
- */
 
-namespace frontend\models;
+namespace common\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * Articles model
+ */
 class Articles extends ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
     public static function tableName()
     {
         return 'articles';
     }
 
-    public function getShortText($text)
+    /**
+     * Cut text
+     *
+     * @param string $text to make it shorter
+     *
+     * @return string|bool
+     */
+    public static function getShortText($text)
     {
         if(!empty($text)) {
             $text = mb_substr($text, 0, 200);
@@ -28,6 +35,9 @@ class Articles extends ActiveRecord
         return false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function attributeLabels()
     {
         return [
@@ -35,11 +45,12 @@ class Articles extends ActiveRecord
             'title' => 'Название',
             'text' => 'Текст',
             'date' => 'Дата',
-            'likes' => 'likes',
-            'hits' => 'hits',
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function rules()
     {
         return [
