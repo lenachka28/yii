@@ -13,8 +13,12 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/custom.css',
+        'css/owl.carousel.css',
+        'css/owl.theme.default.css',
     ];
     public $js = [
+        'js/owl.carousel.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -25,30 +25,30 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<div class="opacity"></div>
 <?php $this->beginBody() ?>
-
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => '<span class="logo">' . Yii::$app->name . '</span>',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'nav-top navbar-fixed-top',
         ],
     ]);
     $menuItems = [
         ['label' => 'Главная', 'url' => ['/site/index']],
-        ['label' => 'Контакты', 'url' => ['/site/contact']],
         ['label' => 'Статьи', 'url' => ['/articles/index']],
+        ['label' => 'Обо мне', 'url' => ['/site/about']],
+        ['label' => 'Контакты', 'url' => ['/site/contact']]
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Регистриция', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'
-             . Html::a('Профиль', '/backend/web')
-        .
-        '</li>';
+            . Html::a('Профиль', '/backend/web')
+            .
+            '</li>';
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
